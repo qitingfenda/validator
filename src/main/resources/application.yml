@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+---
+
+spring:
+  datasource:     #datasource数据库连接
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.17.0.11:26030/oa?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+    username: djoa
+    password: dongjingoa
+    type: org.apache.commons.dbcp2.BasicDataSource   #连接池配置
+    dbcp2:            #dbcp2连接池设置
+      initial-size: 3
+      max-total: 20   #dbcp2将maxActive改成了maxTotal
+      max-idle: 20
+      min-idle: 1
+      max-wait-millis: 60000
+
+mybatis:
+  mapper-locations: classpath:com/djcps/validator/**/mapper/*Mapper.xml
